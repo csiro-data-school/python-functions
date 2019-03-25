@@ -1,4 +1,4 @@
-# Intermediate Programming with Python
+# Python Functions
 
 ## Contributing
 
@@ -11,8 +11,8 @@ how to write new episodes.
 
 ## Maintainer(s)
 
+* [Kerensa McElroy] (https://github.com/KerensaMcElroy)
 * [Daniel Collins](https://github.com/DC23)
-* [Alex Whan](https://github.com/alexwhan)
 
 ## Authors
 
