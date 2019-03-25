@@ -90,3 +90,93 @@ data flow (inputs and outputs).
 Finally, when designing your functions, it can be helpful to only write
 functions that do a single task. One function, one job. Complicated functions
 that do many things are harder to write, harder to debug, and harder to use.
+
+## Use docstrings to document your functions in a standard way
+
+Python functions can contain a special documentation string, known as the docstring. The docstring can contain information about the purpose and use of your function.
+
+- Docstrings allow us to document our code in a standard way.
+- Following the standard makes our code more easily readable to other
+  programmers, and also allows software tools to use our documentation
+  automatically.
+- More technically (see [PEP-257][pep-257]):
+    - A docstring is a string literal that occurs as the first statement in
+      a module, function, class, or method definition.
+    - This string is assigned to the `__doc__` special attribute of the object.
+        - This allows it to be used in standard ways, since tools just need to
+          look for a value assigned to `__doc__`.
+- Docstrings can be either one line, or multiple lines long.
+
+There are a number of docstring conventions. Some of the most useful are:
+- Surround docstrings with triple double quotes (`"""`).
+- Do not put a blank line before or after the docstring.
+
+### A one-line docstring example
+For example (from [PEP-257][pep-257]):
+~~~
+def kos_root():
+    """Return the pathname of the KOS root directory."""
+    global _kos_root
+    if _kos_root: return _kos_root
+    ...
+~~~
+{: .language-python}
+- Triple quotes are used even though the string fits on one line. This makes it
+  easy to later expand it.
+- The closing quotes are on the same line as the opening quotes. This looks
+  better for one-liners.
+- There's no blank line either before or after the docstring.
+- The docstring is a phrase ending in a period. It prescribes the function or
+  method's effect as a command ("Do this", "Return that"), not as a description;
+  e.g. don't write "Returns the pathname ...".
+
+### A multi-line docstring example
+
+~~~
+def complex(real=0.0, imag=0.0):
+    """Form a complex number.
+
+    Keyword arguments:
+    real -- the real part (default 0.0)
+    imag -- the imaginary part (default 0.0)
+    """
+    if imag == 0.0 and real == 0.0:
+        return complex_zero
+    ...
+~~~
+{: .language-python}
+Note the following features:
+
+- A one-line summary at the start,
+- Followed by a blank line,
+- Further elaboration, in this case a description of the arguments,
+- A final carriage return with the final `"""` on their own line.
+
+> ## Add a docstring
+> What do you think this function does?
+> Add a docstring to it.
+> ~~~
+> def last_first(first_name, last_name, separator=", "):
+>     result = "{0}{1}{2}".format(last_name, separator, first_name)
+>     return result
+> ~~~
+> {: .language-python}
+> > ## Solution
+> > The function takes a first name and a last name, returning a single string
+> > with the last name first, separated from the first name by the separator
+> > string.
+> > The separator value is optional, with a default value of ", ".
+> > ~~~
+> > def last_first(first_name, last_name, separator=", "):
+> >     """Return a single string in the form "{last_name}{separator}{first_name}".
+> >     Arguments:
+> >     first_name -- the first name
+> >     last_name -- the last name
+> >     separator -- the separator used between first and last names (default ", ")
+> >     """
+> >     result = "{0}{1}{2}".format(last_name, separator, first_name)
+> >     return result
+> > ~~~
+> > {: .language-python}
+> {: .solution}
+{: .challenge}
