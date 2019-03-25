@@ -123,9 +123,17 @@ However, this wouldn't be a wise choice; it's easier to maintain and understand 
 > {: .solution}
 {: .challenge}
 
+## A Common Error
+Functions must be defined before you can call them.
+The following code will not work:
+~~~
+print_farewell()
+~~~
+{: .language-python}
+
 ## Specifying function parameters
 
-Many of the built-in functions we have seen have *parameters*. It is by providing *arguments* to these parameters that we can ask functions to do work on our data.
+Functions are most useful when they can operate on different data. Many of the built-in functions we have seen have *parameters*. It is by providing *arguments* to these *parameters* that we can ask functions to do work on our data.
 
 Let's look again at the help for the built-in function `round`:
 
@@ -170,26 +178,53 @@ round(2.71828, 1)
 
 Here, we are providing different 'data' or 'arguments', to the same parameters `number` and `ndigits`.
 
+We can use parameters to get data into functions we design ourselves as well. Consider our existing 
+function definition and call:
 
-
-
-## A Common Error
-Functions must be defined before you can call them.
-The following code will not work:
 ~~~
-print_farewell("good bye")
+def print_greeting():
+    print('Hello!')
+    
+print_greeting()
+~~~
+{: .language-python}
+~~~
+'Hello!'
+~~~
+{: .challenge}
+
+This is not particularly useful, however, as we can't change what greeting our function prints.
+We could, instead, provide a parameter:
+
+~~~
+def print_greeting(salutation):
+   print(salutation)
 ~~~
 {: .language-python}
 
+~~~
+print_greeting('Bonjour')
+print_greeting('Namaste')
+print_greeting('Ciao')
+~~~
+{: .language-python}
+~~~
+'Bonjour'
+'Namaste'
+'Ciao'
+~~~
+{: .output}
 
+Ta da! Now we can define function that do work on user-supplied data.
+
+* Specify *parameters* when defining a function.
+* Use these as *variables* within the function body
+* The *arguments* when the function is called are the *values* that get assigned to the 
+parameter *variables* inside the function.
 
 ## Arguments in the function call are matched to the parameters in the function definition
 
-- Functions are most useful when they can operate on different data.
-- Specify *parameters* when defining a function.
-    - These become *variables* when the function is executed.
-    - They are assigned the arguments in the function call (i.e., the values
-      passed to the function).
+
     - If you don't name the arguments when using them in the call, the arguments
       will be matched to parameters in the order the parameters are defined in
       the function.
