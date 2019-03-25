@@ -252,14 +252,16 @@ print("the nucleotides are: dna)
 > {: .language-python}
 > 
 >    a. 'gold'
+>
 >    b. poor
+>
 >    c. 'tin'
+>
 >    d. 'poor'
 >
 > 2. What is the output of `max(len(rich), len(poor))`?
 > 3. Does `max(len(rich), poor)` run or produce an error message?
 >    If it runs, does its result make any sense?
-> {: .language-python}
 {: .challenge}
 
 > ## Why Not?
