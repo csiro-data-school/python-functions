@@ -1,9 +1,8 @@
 ---
-title: "Functions"
+title: "Creating functions"
 teaching: 20
 exercises: 20
 questions:
-- "What are functions?"
 - "How do I create my own functions in Python?"
 - "How do I use my own functions?"
 - "How do I document my functions?"
@@ -25,85 +24,76 @@ keypoints:
 
 ---
 
-## Don't Repeat Yourself
-
-One of the core principles of any programming language is, "Don't Repeat
-Yourself", often referred to as DRY. If you have an action that should occur
-many times, you can define that action once and then call that code whenever you
-need to carry out the action.
-
-Functions mean less work for us as programmers, and effective use of functions
-results in code that is less error-prone.
-
-When our function works, we don't have to worry about that code anymore. Every
-time you repeat code in your program, you introduce an opportunity to make
-a mistake. Writing a function means there is one place to fix mistakes, and when
-those bugs are fixed, we can be confident that this function will continue to
-work correctly.
-
-## Break programs down into functions to make them easier to understand
-
-We can only keep a few items or ideas in working memory at a time. To understand
-complicated ideas, we chunk information together and then think about the
-higher-level chunks. For example, when thinking about cars we may just think
-about engines, wheels, and entertainment systems. Each one is a complicated
-system, but we don't need to consider every detail all the time.
-
-Functions serve the same purpose in programs. They chunk some code together so we
-can treat it as a single thing elsewhere. For example, I can use a `sort()` function to
-order a list of strings without needing to think about the implementation
-details of sorting algorithms.
-
-Functions allow us to:
-
-- order our code,
-- think about our code at a higher-level,
-- make our code more readable,
-- make our code reusable,
-    - write once, use often
-- make our code more reliable,
-- make our code easier to update,
-    - modifying a function is easier than finding and modifying multiple
-      sections of duplicated code
-- make our code testable (see the [testing episode]({{ page.root
-  }}/13-testing/)),
-- define interfaces so others can use our code.
-
-Additionally, functions provide a convenient focal point for documentation.
-They are at the right level of detail for documenting your code, and Python has
-a number of good tools for generating formatted documentation from functions.
-
-### FIXME: Do I need the next 2 paragraphs?
-Conceptually, functions can be treated as a box of code. When using a function
-it can be a black box. You need only consider the inputs and outputs: what data
-do you supply, and what should you get back. When writing functions they are
-a white box: you must pay attention to the internal details as well as the
-data flow (inputs and outputs).
-
-Finally, when designing your functions, it can be helpful to only write
-functions that do a single task. One function, one job. Complicated functions
-that do many things are harder to write, harder to debug, and harder to use.
+We've seen how to use and work with Python's built-in functions. How can we 
+define extra functions of our own, that do specific tasks?
 
 ## Define a function using `def` with a name, parameters, and a block of code
-
-- Begin the definition of a new function with `def`.
-- Followed by the name of the function.
-    - Must obey the same rules as variable names.
-    - A variable name tells you what kind of value the variable contains;
-      a function name should tell you what the function does.
-- Then *parameters* in parentheses.
-    - These are basically variable names, but they are only used in the function.
-        - Again, the same variable naming rules apply.
-    - Empty parentheses if the function doesn't take any inputs.
-- Then a colon.
-- Then an indented block of code.
-    - This is the body of the function.
 
 ~~~
 def print_greeting():
     print('Hello!')
 ~~~
 {: .language-python}
+
+Here, the new function:
+
+- Begins with the keyword `def`, followed by a space
+- Next comes the name we give our new function, `print_greeting`
+- Parentheses `()` enclose the function's *parameters*. 
+- The `def` statement ends with a colon `:`
+- The *body* of the function follows, within an indented block of code
+
+> ## Function definition syntax
+> Where have we seen the keyword, colon, code block syntax before?
+{: .discussion}
+
+> ## Function parameters
+> How many parameters does our function have?
+{: .discussion}
+
+## Calling functions
+
+* Defining a function does not run it.
+* Must call the function to execute the code it contains.
+* Calling functions you define is just like calling built-in functions:
+
+~~~
+print_greeting()
+~~~
+{: .language-python}
+
+~~~
+Hello!
+~~~
+{: .output}
+
+* start with the function name
+* include arguments within parenthesis
+* do not end the function call with a colon! (Why not?)
+
+> ## Hello World
+> Modify the function definition example above so that the function call 
+> now prints `'Hello world'`
+{: .challenge}
+
+## Choosing function names
+
+Functions naming follows the same rules as variable naming. Just like variables,
+Python doesn't care what you call your function, as long as it follows the rules. So, this code works:
+
+~~~
+def mr_flibble():
+    print('Hello!')
+    
+mr_flibble()
+~~~
+{: .language-python}
+~~~
+'Hello'
+~~~
+{: .output}
+
+However, this wouldn't be a wise choice; it's easier to maintain and understand code if your function name tells you what the function does.
 
 > ## Write a Happy Birthday function
 >
@@ -117,34 +107,6 @@ def print_greeting():
 > > {: .language-python}
 > {: .solution}
 {: .challenge}
-
-## Defining a function does not run it
-
-- Defining a function does not run it.
-- Must call the function to execute the code it contains.
-- Function arguments can either be literal values or variables.
-
-~~~
-print_greeting()
-~~~
-{: .language-python}
-
-~~~
-Hello!
-~~~
-{: .output}
-
-> ## A Common Error
-> Functions must be defined before you can call them.
-> The following code would not work:
-> ~~~
-> print_greeting("Bruce")
->
-> def print_greeting():
->     print('Hello!')
-> ~~~
-> {: .language-python}
-{: .callout}
 
 > ## Call your Happy Birthday function
 >
@@ -160,6 +122,66 @@ Hello!
 > > {: .output}
 > {: .solution}
 {: .challenge}
+
+## Specifying function parameters
+
+Many of the built-in functions we have seen have *parameters*. It is by providing *arguments* to these parameters that we can ask functions to do work on our data.
+
+Let's look again at the help for the built-in function `round`:
+
+~~~
+help(round)
+~~~
+{: .python}
+~~~
+Help on built-in function round in module builtins:
+
+round(...)
+    round(number[, ndigits]) -> number
+
+    Round a number to a given precision in decimal digits (default 0 digits).
+    This returns an int when called with one argument, otherwise the
+    same type as the number. ndigits may be negative.
+~~~
+{: .output}
+
+Here, the parameters of `round` are `number` and `ndigits`. When we call this function:
+
+~~~
+round(3.14159265359, 2)
+~~~
+{: .language-python}
+~~~
+3.14
+~~~
+{: .output}
+
+we are providing the arguments `3.14159265359` and `2` to the parameters `number` and `ndigits`, respectively.
+
+We could call round again, changing the arguments:
+~~~
+round(2.71828, 1)
+~~~
+{: .language-python}
+~~~
+2.7
+~~~
+{: .output}
+
+Here, we are providing different 'data' or 'arguments', to the same parameters `number` and `ndigits`.
+
+
+
+
+## A Common Error
+Functions must be defined before you can call them.
+The following code will not work:
+~~~
+print_farewell("good bye")
+~~~
+{: .language-python}
+
+
 
 ## Arguments in the function call are matched to the parameters in the function definition
 
