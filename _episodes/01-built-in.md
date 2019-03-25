@@ -244,32 +244,32 @@ print("the nucleotides are: dna)
 > ## Spot the Difference
 >
 > 1. Without running this code, predict what it's output will be:
->  ~~~
->  rich = "gold"
->  poor = "tin"
->  print(max(rich, poor))
->  ~~~
->  {: .language-python}
->  a) 
->  ~~~
->  'gold'
->  ~~~
->  {: .output}
->  b)
->  ~~~
->  poor
->  ~~~
->  {: .output}
->  c)
->  ~~~
->  'tin'
->  ~~~
->  {: .output}
->  d)
->  ~~~
->  'poor'
->  ~~~
->  {: .output}
+>     ~~~
+>     rich = "gold"
+>     poor = "tin"
+>     print(max(rich, poor))
+>     ~~~
+>     {: .language-python}
+>     a) 
+>     ~~~
+>     'gold'
+>     ~~~
+>     {: .output}
+>     b)
+>     ~~~
+>     poor
+>     ~~~
+>     {: .output}
+>     c)
+>     ~~~
+>     'tin'
+>     ~~~
+>     {: .output}
+>     d)
+>     ~~~
+>     'poor'
+>     ~~~
+>     {: .output}
 > 2. What is the output of `max(len(rich), len(poor))`?
 > 3. Does `max(len(rich), poor)` run or produce an error message?
 >    If it runs, does its result make any sense?
