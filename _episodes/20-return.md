@@ -11,8 +11,8 @@ objectives:
 - "Explain the difference between `print` and `return` within a function"
 keypoints:
 - "Functions return results with the `return` statement."
-- "Functions without explicit `return` values return `None`
-- "Within a function, `Print` communicates with humans, `return` communicates with the computer
+- "Functions without explicit `return` values return `None`"
+- "Within a function, `Print` communicates with humans, `return` communicates with the computer"
 ---
 
 ## Functions output results with the `return` statement
