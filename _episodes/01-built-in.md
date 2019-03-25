@@ -42,7 +42,7 @@ To call a built-in function, we:
 
 * start with the function's 'name' or *identifier*. In the examples above, this is `print` and `len`
 * provide some *arguments* for the function to work on (`greeting` and `dna` respectively in the functions above)
-* enclose the argmuments inside rounded brackets `()`
+* enclose the arguments inside rounded brackets `()`
 
 > ## Functions and automation
 > Instead of using the built in function, we could instead calculate the length of a string using a `for` loop:
@@ -105,7 +105,7 @@ after
 > 1. How many arguments do each of these functions take?
 > 2. What are the possible `types` of the input arguments?
 > 3. How many outputs are there for each function? What are their types?
-> {: .challenge}
+{: .challenge}
 
 ## Commonly-used built-in functions include `max`, `min`, and `round`.
 
@@ -179,7 +179,7 @@ round(3.14159265359, 1)
 ~~~
 {: .output}
 
-## Reading help
+> ## Reading help
 > Every built-in function has online documentation. Read the documentation for `round`:
 > ~~~
 > help(round)
@@ -244,7 +244,6 @@ print("the nucleotides are: dna)
 > ## Spot the Difference
 >
 > 1. Without running this code, predict what it's output will be:
->
 > ~~~
 > rich = "gold"
 > poor = "tin"
@@ -252,10 +251,10 @@ print("the nucleotides are: dna)
 > ~~~
 > {: .language-python}
 > 
-> a) 'gold'
-> b) poor
-> c) 'tin'
-> d) 'poor'
+>    a. 'gold'
+>    b. poor
+>    c. 'tin'
+>    d. 'poor'
 >
 > 2. What is the output of `max(len(rich), len(poor))`?
 > 3. Does `max(len(rich), poor)` run or produce an error message?
