@@ -15,29 +15,12 @@ keypoints:
 - "A systematic design recipe will help you write elegant functions from the get-go!"
 ---
 
-## The black-box function
+We now understand the syntax of Python functions and know how to put together very simple functions. However, how do you write a function when it is a bit more complex? How do you:
 
-Functions are at the heart of programing; they are the machines that do work. 
-Once we've written a function, it's a bit like a black box:
+* know how 'big' to make your function, i.e. how many tasks should it do
+* handle all possible inputs
+* make sure others (and your future self!) know how to use your function
 
-* you give it some input 
-* it does some magic
-* it spits out some output. 
-
-~~~
-first_name = 'Kerensa'
-len(first_name)
-~~~
-{: .language-python}
-
-~~~
-7
-~~~
-{: .output}
-
-Here, we've called the fuction `len()`, with the input data `first_name`, and received some 
-output data `7`. We don't see the internal workings or calculations of the function, len() 
-is essentially a black box that does some processing.
 
 ## Tinker till it works, or ...
 Beginner (and often even advanced!) coders often start writing a new function by working out the logic inside
@@ -45,6 +28,79 @@ the black box. This path is hard and bug-prone! An alternative approach involves
 our function to do first. Once that is crystal clear, working out the nuts and bolts inside the black box is much
 easier.
 {: .callout}
+
+## The black-box function
+
+A well written function is a bit like a black box:
+
+* you give it some input 
+* it does some magic
+* it spits out some output. 
+
+Instead of tinkering with the insides first, we can do a really good job of designing what the outside of the box looks like 
+first. Only once that is done, do we start work on the 'mechanics' inside the body of the function. 
+
+## Design Recipe
+
+This design recipe can be applied to functions in any language:
+
+> ## DESIGN RECIPE
+> 1. **Signature**: this decribes how many inputs and outputs our function has, and their type.
+> 2. **Purpose**: a short, succinct description of the task (one line max)
+> 3. **Stub**: puts names to the inputs and outputs of the function
+> 4. **Examples**: demonstrates how you expect your function to behave in difference scenarios.
+>
+> We will go through each of these steps in turn below.
+{: .callout}
+
+## Design recipe in Python
+
+Say we want to write a function that converts temperature in Fahrenheit to Celsius. Our design recipe looks like this:
+
+~~~
+# fahr_to_cel: Float -> Float
+def fahr_to_celsius(temp_fahr):
+    '''Converts temperature in fahrenheit to temperature in celsius
+    >>> fahr_to_celsius(52.0)
+    11.1
+    >>> fahr_to_celsius(0)
+    -17.8
+    '''
+    
+    # magic...
+    
+    return(temp_cels)
+~~~
+{: .language-python}
+
+Let's talk through this example step by step.
+
+## Signature
+  
+The signature formalises the process of describing our function's inputs and outputs. In our example, it is the line:
+
+~~~
+# fahr_to_cel: Float -> Float
+~~~
+{: .language-python}
+
+We start by giving our function a name, `fahr_to_cel`. Next, we describe the number and 'type' of inputs and outputs.
+Here, we say `Float -> Float`, meaning we have one input of type `Float`, (before the `->`), and one output of type `Float`
+(after the `->`). We start the signature line with a `#`, to turn it into a comment. Python itself doesn't care if this line is there or not, it is just a comment to help us understand the code and get our thoughts in order.
+
+## Purpose
+
+This one sounds deceptively easy: in one sentence (say, 80 characters max), describe what your function does.
+
+> Purpose statement guidelines:
+> * Don't repeat info that is in the signature. There is no need for the name of the function, or a description
+> of its inputs and outputs.
+> * Keep it as generic as possible. If it calculates the area of a rectangle, say it calculates the area of a rectangle. Don't say, it gives the area of a Boorowa field plot. 
+> * Try and word it so any colleague in CSIRO would understand it.
+> * If you absolutely need more than 80 characters, you probably need to further limit what the 'job' your function does is. You might be better off writing two smaller functions, rather than one larger one.
+{: .callout}
+
+
 
 ## Words to functions
 
