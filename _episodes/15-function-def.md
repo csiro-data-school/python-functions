@@ -191,7 +191,7 @@ print_greeting()
 ~~~
 'Hello!'
 ~~~
-{: .challenge}
+{: .output}
 
 This is not particularly useful, however, as we can't change what greeting our function prints.
 We could, instead, provide a parameter:
