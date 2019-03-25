@@ -340,8 +340,8 @@ Hello Brian
 Let's think about some built in functions again:
 
 ~~~
-p_return = print('Welcome back')
-print(p_return)
+print_return = print('Welcome back')
+print(print_return)
 ~~~
 {: .language-python}
 ~~~
@@ -350,8 +350,8 @@ None
 {: .output}
 
 ~~~
-l_return = len('Welcome back')
-print(l_return)
+len_return = len('Welcome back')
+print(len_return)
 ~~~
 {: .language-python}
 ~~~
@@ -367,30 +367,60 @@ save it's output to a variable.
 
 You can use a `return` statement to make your function 'give back' some output that can be saved and used downstream.
 
-- Use `return ...` to give a value back to the caller.
-- May occur anywhere in the function.
-- But functions are easier to understand if `return` occurs:
-    - At the start to handle special cases.
-    - At the very end, with a final result.
-- Every function returns something. If your function does not explicitly
-  `return` a value, then `None` is returned automatically.
+For example, 
 
-> ## Averaging numbers
-> Write a function that accepts a list of numbers and returns the average.
-> If the argument is an empty list, then return `None`. All other error
-> conditions can be ignored.
-> > ## Solution
-> > ~~~
-> > def average(values):
-> >     if len(values) == 0:
-> >         return None
-> >     return sum(values) / len(values)
-> > ~~~
-> > {: .language-python}
-> {: .solution}
+~~~
+def average(values):
+    return sum(values) / len(values)
+~~~
+{: .language-python}
+
+~~~
+average([2, 10, 4])
+average([34.4, 9, 10])
+average([-8, 3, 9])
+~~~
+{: .language-python}
+~~~
+1.333333333333333
+~~~
+{: .output}
+
+Why did we only get one output value? Did the function calls work?
+
+Now, try this:
+~~~
+mean_ints = average([2, 10, 4])
+mean_float =average([34.4, 9, 10])
+mean_neg = average([-8, 3, 9])
+print(mean_ints, mean_float, mean_neg)
+~~~
+{: .language-python}
+~~~
+5.333333333333333 17.8 1.333333333333333
+~~~
+{: .output}
+
+## Can have multiple `return`
+
+`return` may occur anywhere in the function. However, functions are easier to understand if `return` only occurs:
+* at the start to handle special cases
+* at the very end, with a final result.
+
+~~~
+def average(values):
+    if len(values) == 0:
+        return None
+    return sum(values) / len(values)
+~~~
+{: .language-python}
+
+> ## Challenge exercise
+> Write a function that returns the median value from a list of values. 
+> Does your function work if it is supplied an empty list?
+> Does your function work if there are multiple data types in your list? Should it?
+> What happens if you give your function data that is not a list?
 {: .challenge}
-
-
 
 ---
 
