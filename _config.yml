@@ -10,7 +10,7 @@
 carpentry: "swc"
 
 # Overall title for pages.
-title: "Intermediate Programming with Python"
+title: "Functions in Python"
 
 # Life cycle stage of the lesson
 # possible values: "pre-alpha", "alpha", "beta", "stable"
