@@ -222,42 +222,57 @@ Ta da! Now we can define function that do work on user-supplied data.
 * The *arguments* when the function is called are the *values* that get assigned to the 
 parameter *variables* inside the function.
 
-## Arguments in the function call are matched to the parameters in the function definition
-
-
-    - If you don't name the arguments when using them in the call, the arguments
-      will be matched to parameters in the order the parameters are defined in
-      the function.
+Again, the parameter names don't matter, as long as you use the same name within the body of your function. This also works:
 
 ~~~
-def print_date(year, month, day):
-    joined = str(year) + '/' + str(month) + '/' + str(day)
-    print(joined)
+def print_greeting(x):
+   print(x)
+~~~
+{: .language-python}
 
-print_date(1871, 3, 19)
+~~~
+print_greeting('Bonjour')
 ~~~
 {: .language-python}
 ~~~
-1871/3/19
+'Bonjour'
 ~~~
 {: .output}
 
-Or, we can name the arguments when we call the function, which allows us to
+As usual, however, meaningful parameter names make for better code.
+
+> ## Fill in the blanks
+> ~~~
+> def print_date(year, month, day):
+>     joined = str(____) + '/' + str(____) + '/' + str(____)
+>     print(joined)
+> 
+> ________(1871, 3, 19)
+> ~~~
+> {: .language-python}
+> ~~~
+> 1871/3/19
+> ~~~
+> {: .output}
+{: .challenge}
+
+## Arguments in the function call are matched to the parameters in the function definition
+
+We can also explicitly match the arguments to parameters when we call a function, which allows us to
 specify them in any order:
 ~~~
-print_date(month=3, day=19, year=1871)
+print_date(month=2, day=12, year=1809)
 ~~~
 {: .language-python}
 ~~~
-1871/3/19
+1809/2/12
 ~~~
 {: .output}
 
 > ## Add a name parameter to your Happy Birthday function
 >
 > Add a parameter called `name` to your happy birthday function. The function
-> should now use the supplied name in the message. Do not worry about the case
-> where the name is not supplied.
+> should now use the supplied name in the message.
 > > ## Solution
 > > ~~~
 > > def happy_birthday(name):
@@ -269,10 +284,10 @@ print_date(month=3, day=19, year=1871)
 
 ## Optional arguments have a default value in the function definition
 
-- You can add optional arguments to your functions by providing a default value
+* You can add optional arguments to your functions by providing a default value
 in the function definition.
-- If a value is supplied in the function call, that value will be used.
-- If no value is supplied at call time, the default will be used.
+* If a value is supplied in the function call, that value will be used.
+* If no value is supplied at call time, the default will be used.
 
 ~~~
 def print_greeting(who=""):
@@ -301,7 +316,7 @@ Hello Brian
 
 > ## Add a default value to `name`
 >
-> Give the `name` parameter a default value of "you".
+> In your `happy_birthday` function, give the `name` parameter a default value of "you".
 > > ## Solution
 > > ~~~
 > > def happy_birthday(name="you"):
@@ -320,7 +335,37 @@ Hello Brian
 > values. However this need not be the case.
 {: .callout}
 
-## Functions return results with the `return` statement
+## Functions output results with the `return` statement
+
+Let's think about some built in functions again:
+
+~~~
+p_return = print('Welcome back')
+print(p_return)
+~~~
+{: .language-python}
+~~~
+None
+~~~
+{: .output}
+
+~~~
+l_return = len('Welcome back')
+print(l_return)
+~~~
+{: .language-python}
+~~~
+12
+~~~
+{: .output}
+
+So far, the functions we have written are most like the `print` example here; they 
+print a value to the screen, however you can't 'save' that value for later by 
+assigning it to a variable. If we try, the variable ends up with the value 'None'. 
+In contrast, a call to `len` doesn't automatically print anything, however we can 
+save it's output to a variable.
+
+You can use a `return` statement to make your function 'give back' some output that can be saved and used downstream.
 
 - Use `return ...` to give a value back to the caller.
 - May occur anywhere in the function.
@@ -345,95 +390,7 @@ Hello Brian
 > {: .solution}
 {: .challenge}
 
-## Use docstrings to document your functions in a standard way
 
-Python functions can contain a special documentation string, known as the docstring. The docstring can contain information about the purpose and use of your function.
-
-- Docstrings allow us to document our code in a standard way.
-- Following the standard makes our code more easily readable to other
-  programmers, and also allows software tools to use our documentation
-  automatically.
-- More technically (see [PEP-257][pep-257]):
-    - A docstring is a string literal that occurs as the first statement in
-      a module, function, class, or method definition.
-    - This string is assigned to the `__doc__` special attribute of the object.
-        - This allows it to be used in standard ways, since tools just need to
-          look for a value assigned to `__doc__`.
-- Docstrings can be either one line, or multiple lines long.
-
-There are a number of docstring conventions. Some of the most useful are:
-- Surround docstrings with triple double quotes (`"""`).
-- Do not put a blank line before or after the docstring.
-
-### A one-line docstring example
-For example (from [PEP-257][pep-257]):
-~~~
-def kos_root():
-    """Return the pathname of the KOS root directory."""
-    global _kos_root
-    if _kos_root: return _kos_root
-    ...
-~~~
-{: .language-python}
-- Triple quotes are used even though the string fits on one line. This makes it
-  easy to later expand it.
-- The closing quotes are on the same line as the opening quotes. This looks
-  better for one-liners.
-- There's no blank line either before or after the docstring.
-- The docstring is a phrase ending in a period. It prescribes the function or
-  method's effect as a command ("Do this", "Return that"), not as a description;
-  e.g. don't write "Returns the pathname ...".
-
-### A multi-line docstring example
-
-~~~
-def complex(real=0.0, imag=0.0):
-    """Form a complex number.
-
-    Keyword arguments:
-    real -- the real part (default 0.0)
-    imag -- the imaginary part (default 0.0)
-    """
-    if imag == 0.0 and real == 0.0:
-        return complex_zero
-    ...
-~~~
-{: .language-python}
-Note the following features:
-
-- A one-line summary at the start,
-- Followed by a blank line,
-- Further elaboration, in this case a description of the arguments,
-- A final carriage return with the final `"""` on their own line.
-
-> ## Add a docstring
-> What do you think this function does?
-> Add a docstring to it.
-> ~~~
-> def last_first(first_name, last_name, separator=", "):
->     result = "{0}{1}{2}".format(last_name, separator, first_name)
->     return result
-> ~~~
-> {: .language-python}
-> > ## Solution
-> > The function takes a first name and a last name, returning a single string
-> > with the last name first, separated from the first name by the separator
-> > string.
-> > The separator value is optional, with a default value of ", ".
-> > ~~~
-> > def last_first(first_name, last_name, separator=", "):
-> >     """Return a single string in the form "{last_name}{separator}{first_name}".
-> >     Arguments:
-> >     first_name -- the first name
-> >     last_name -- the last name
-> >     separator -- the separator used between first and last names (default ", ")
-> >     """
-> >     result = "{0}{1}{2}".format(last_name, separator, first_name)
-> >     return result
-> > ~~~
-> > {: .language-python}
-> {: .solution}
-{: .challenge}
 
 ---
 
