@@ -2,12 +2,6 @@
 title: "Design recipe"
 teaching: 30
 exercises: 30
-questions:
-- "fix me"
-objectives:
-- "fix me"
-keypoints:
-- "fix me"
 ---
 
 ## Design Recipe
@@ -17,7 +11,7 @@ This design recipe can be applied to functions in any language:
 > ## DESIGN RECIPE
 > 1. **Signature**: this decribes how many inputs and outputs our function has, and their type.
 > 2. **Purpose**: a short, succinct description of the task (one line max)
-> 3. **Stub**: puts names to the inputs and outputs of the function
+> 3. **Stub**: gives variable names to the inputs and outputs of the function
 > 4. **Examples**: demonstrates how you expect your function to behave in difference scenarios.
 >
 > We will go through each of these steps in turn below.
@@ -25,14 +19,17 @@ This design recipe can be applied to functions in any language:
 
 ## Signature
   
-The signature formalises the process of describing our function's inputs and outputs. Let's consider our DNA example again:
+The signature formalises the process of describing our function's inputs and outputs. 
+Let's consider our DNA example again:
 
-> The component acids that form DNA are often represented as 'A', 'T', 'G', and 'C'. The amount of 'G' and 'C' in 
+> ## DNA
+> The component acids that form DNA are often represented as 'A', 'T', 'G', and 'C', e.g. 'AATCGCGTTA'. The amount 
+> of 'G' and 'C' in 
 > a DNA sequence tends to be organism specific. You've received some sequence data from a service provider,
 > and as a simple test of contamination you want to check its GC ratio.
 {: callout}
 
-We might write:
+Our signature might look like:
 
 `compute_gc: String -> Float`
 
@@ -41,16 +38,18 @@ Here, `compute_gc` is the name we choose to give our funtion. Following the name
 > ## Antibiotic signature
 > Fill in the blanks to complete this signature:
 >
-> 'Antibiotics are sometimes tested by 'dropping' a measured dose onto the middle of a petri dish that is 
-> covered in a bacterial 'lawn'. Resistance is measured as the area of the disk still covered by bacteria 
-> after 2 days. Bacterial death spreads out from the antibiotic drop creating a perfect bacteria-free central 
-> disk. You've recorded the diameter of several hundreds of test spots, with three replicates per plate. You want to find 
-> the average measure of resistance.' 
+> Antibiotics are sometimes tested by placing antibiotic-impregnated paper disks onto bacteria-covered agar in a petri dish.
+> Bacterial death spreads out from the antibiotic creating a perfect circular bacteria-free zone. You've recorded the 
+> diameter of several hundreds of test plates, with three replicates per plate. You want to find 
+> the average area of the bacterial zones for your resistance calculations.
 >
 > ~~~
 > mean_resistance: Float ____ ____ -> ____
 > ~~~
-> {: .source}
+> {: .language-python}
+>
+> What decisions have already been made here about your function?
+>
 {: .challenge}
 
 > ## Field data signature
@@ -79,12 +78,16 @@ This one sounds deceptively easy: in one sentence (say, 80 characters max), desc
 > * Don't repeat info that is in the signature. There is no need for the name of the function, or a description
 > of its inputs and outputs.
 > * Keep it as generic as possible. If it calculates the area of a rectangle, say it calculates the area of a rectangle. Don't say, it gives the area of a Boorowa field plot. 
-> * Try and word it so any colleague in Agriculture and Food would understand it.
+> * Try and word it so any colleague in CSIRO would understand it.
+> * If you absolutely need more than 80 characters, you probably need to further limit what the 'job' your function does is. You might be better off writing two smaller functions, rather than one larger one.
 {: .callout}
 
 Let's return again to our field data example:
 
-'The field data is back from the trial, but unfortunately I'm having a lot of trouble loading it into the software because the assistant recorded the dates using the month's name, and it wants dates formatted like 2018-03-02, 2018-06-04, etc. Do you think you could write me a quick script to help me out?'
+'The field data is back from the trial, but unfortunately I'm having a lot of trouble loading 
+it into the software because the assistant recorded the dates using the month's name, and it 
+wants dates formatted like 2018-03-02, 2018-06-04, etc. Do you think you could write me a quick 
+script to help me out?'
 
 We've already defined our signature:
 
@@ -110,17 +113,16 @@ A purpose statement might be:
 >
 > Given your word problem and signature, write a purpose statement for the antibiotic exercise:
 >
-> 'Antibiotics are sometimes tested by 'dropping' a measured dose onto the middle of a petri dish that is
-> covered in a bacterial 'lawn'. Resistance is measured as the area of the disk still covered by bacteria
-> after 2 days. Bacterial death spreads out from the antibiotic drop creating a perfect bacteria-free central
-> disk. You've recorded the diameter of several hundreds of test spots, with three replicates per plate. Find
-> the average measure of resistance.'
+> Antibiotics are sometimes tested by placing antibiotic-impregnated paper disks onto bacteria-covered agar in a petri dish.
+> Bacterial death spreads out from the antibiotic creating a perfect circular bacteria-free zone. You've recorded the 
+> diameter of several hundreds of test plates, with three replicates per plate. You want to find 
+> the average area of the bacterial zones for your resistance calculations.
 {: .challenge}
 
 ## Stub
 
-Here, we sketch out our actual function, giving names to the input and output data. Soon, you will see how to do this in
-Python 3 notation, however for now, let's copy the format of our signature:
+Here, we sketch out our actual function, giving names to the input and output data. Soon, we will do this in 
+Python notation, however for now, let's copy the format of our signature:
 
 If our field trial signature is:
 
@@ -133,13 +135,13 @@ Then our stub might become:
 > ## Stub rules
 > * must have the same number of inputs and outputs as our signature
 > * must have the same function name as our signature
-> * names given to each input are the **argument variables** we pass to our function, and can be used inside our function
+> * names given to each input are the **parameters** ofo our function, and can be used inside our function as variables
 > * names given to each output are the **return variables**
 {: .callout}
 
 
 > ## DNA Stub
-> Given the stub
+> Given the signature:
 >
 > `compute_gc: String -> Float`
 > 
@@ -159,10 +161,9 @@ Then our stub might become:
 > 4. mean_resistance: d1 d2 d3 -> Float
 {: .challenge}
 
-
 ## Examples
 
-Examples are the most important part of your function design recipe, and often the most overlooked! If you can master the art of writing good examples, then you will be able to write code that works, is easy to read, and is easy to debug.
+Examples are the most important part of your function design recipe, and often the most overlooked. If you can master the art of writing good examples, then you will be able to write code that works, is easy to read, and is easy to debug.
 
 Example guidelines
  * choose 3 or 4 well-thought out examples
@@ -181,13 +182,14 @@ Example guidelines
 > * `TGgggTCaGtnAAa`- sequence contains mix of capital and lower case letters, or 'n'
 {: .callout}
 
-Working out your boundary conditions, and including them as examples in your function documentation, is what really defines how your function should behave. Not only does it help you write the function, it also tells anyone else who uses it or reads it exactly what to expect. 
+Working out your boundary conditions is what really defines how your function should behave. Not only does 
+it help you write the function, it also tells anyone else who uses it or reads it exactly what to expect. 
 
 In our 'generic' function design recipe, you can formulate your examples just like your signature and stub:
 
-`compute_gc: T -> 0.0`
+`compute_gc: "T" -> 0.0`
 
-`compute_gc: GGGGGGGGG -> 100.0`
+`compute_gc: "GGGGGGGGG" -> 100.0`
 
 > ## DNA
 >
