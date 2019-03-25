@@ -4,7 +4,6 @@ teaching: 20
 exercises: 20
 questions:
 - "How can I save the output of functions?"
-
 objectives:
 - "Use a `return` statement within the body of a function"
 - "Capture a return value in a variable"
@@ -14,7 +13,6 @@ keypoints:
 - "Functions return results with the `return` statement."
 - "Functions without explicit `return` values return `None`
 - "Within a function, `Print` communicates with humans, `return` communicates with the computer
-
 ---
 
 ## Functions output results with the `return` statement
