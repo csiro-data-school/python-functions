@@ -92,7 +92,7 @@ Here, we say `Float -> Float`, meaning we have one input of type `Float`, (befor
 
 This one sounds deceptively easy: in one sentence (say, 80 characters max), describe what your function does.
 
-> Purpose statement guidelines:
+> ## Purpose statement guidelines:
 > * Don't repeat info that is in the signature. There is no need for the name of the function, or a description
 > of its inputs and outputs.
 > * Keep it as generic as possible. If it calculates the area of a rectangle, say it calculates the area of a rectangle. Don't say, it gives the area of a Boorowa field plot. 
@@ -105,16 +105,20 @@ In our example above, the purpose statement is:
 ~~~
 Converts temperature in fahrenheit to temperature in celsius
 ~~~
+{: .language-python}
 
 ## Stub
 
 Next comes the stub. The stub 'maps' the inputs and outputs to names, and sets up the 'skeleton' of the function. Here is our stub:
 
+~~~
 def fahr_to_celsius(temp_fahr):
     
     # magic...
     
     return(temp_cels)
+~~~
+{: .language-python}
     
 Your stub must:
 
@@ -146,7 +150,8 @@ Our examples are:
 
 > ## Use docstrings to document your functions in a standard way
 >
-> Python functions can contain a special documentation string, known as the docstring. The docstring can contain information about the purpose and use of your function.
+> Python functions can contain a special documentation string, known as the docstring. 
+> The docstring can contain information about the purpose and use of your function.
 >
 > * Docstrings allow us to document our code in a standard way.
 > * Following the standard makes our code more easily readable to other
