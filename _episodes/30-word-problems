@@ -4,18 +4,7 @@ teaching: 30
 exercises: 30
 ---
 
-## Design Recipe
 
-This design recipe can be applied to functions in any language:
-
-> ## DESIGN RECIPE
-> 1. **Signature**: this decribes how many inputs and outputs our function has, and their type.
-> 2. **Purpose**: a short, succinct description of the task (one line max)
-> 3. **Stub**: gives variable names to the inputs and outputs of the function
-> 4. **Examples**: demonstrates how you expect your function to behave in difference scenarios.
->
-> We will go through each of these steps in turn below.
-{: .callout}
 
 ## Signature
   
