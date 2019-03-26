@@ -1,5 +1,5 @@
 ---
-title: "Word problems"
+title: "Designing functions"
 teaching: 30
 exercises: 30
 questions:
