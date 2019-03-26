@@ -103,7 +103,7 @@ This one sounds deceptively easy: in one sentence (say, 80 characters max), desc
 In our example above, the purpose statement is:
 
 ~~~
-Converts temperature in fahrenheit to temperature in celsius
+# Converts temperature in fahrenheit to temperature in celsius
 ~~~
 {: .language-python}
 
