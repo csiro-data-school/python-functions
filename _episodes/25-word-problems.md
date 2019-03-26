@@ -164,6 +164,7 @@ Our examples are:
 > * Surround docstrings with triple double quotes (`"""`).
 > * Do not put a blank line before or after the docstring.
 >
+>
 > ### A one-line docstring example
 > For example (from [PEP-257][pep-257]):
 > ~~~
@@ -205,6 +206,25 @@ Our examples are:
 > * Further elaboration, in this case a description of the arguments,
 > * A final carriage return with the final `"""` on their own line.
 {: .callout}
+
+> ## fahr_to_celsius
+> Write out your own `fahr_to_celsius` function. Now, call your function using your 
+> examples that you specified in the docstring. Do your examples exactly match your function output?
+> If they don't match, modify your function to match the examples.
+{: .challenge}
+
+> ## Change the body, not the examples!
+> You've already thought a lot about how you want your function to behave. You've already defined 'correct' behavior.
+> If you get an unexpected result, or a result that is not *quite* what you expect, don't cheat and change your examples.
+> As we have seen, functions often rely on other functions... if you redefine what you *want* your function to do on the fly, 
+> you are likely to break other parts of your code. Instead, keep working on the logic of your function until it exactly 
+> matches your examples.
+{: .callout}
+
+> ## Fahrenheit to Kelvin
+> 1. In order, write out the signature, stub, purpose, and examples for this function using Python notation.
+> 2. Now, fill in the body. 
+{: .challenge}
 
 ## Words to functions
 
