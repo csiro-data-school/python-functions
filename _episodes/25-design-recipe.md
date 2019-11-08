@@ -142,13 +142,13 @@ Our examples are:
 {: .language-python}
 
 
-> ##Example guidelines
+> ## Example guidelines
 > * choose 2 to 4 well-thought out examples
 > * try and find 'boundary' conditions. In our example, `0` is a natural boundary for the kind of data we will input.
 > * for now, design examples that are **meant** to work, rather designing examples to break your code. 
 {: .callout}
 
-> ## Use docstrings to document your functions in a standard way
+> ## Place your purpose statement and examples inside a 'docstring'
 >
 > Python functions can contain a special documentation string, known as the docstring. 
 > The docstring can contain information about the purpose and use of your function.
@@ -157,59 +157,11 @@ Our examples are:
 > * Following the standard makes our code more easily readable to other
 >  programmers, and also allows software tools to use our documentation
 >  automatically.
-> * More technically (see [PEP-257][pep-257]):
->    * A docstring is a string literal that occurs as the first statement in
->      a module, function, class, or method definition.
->    * This string is assigned to the `__doc__` special attribute of the object.
->        * This allows it to be used in standard ways, since tools just need to
->          look for a value assigned to `__doc__`.
 > * Docstrings can be either one line, or multiple lines long.
 >
 > There are a number of docstring conventions. Some of the most useful are:
 > * Surround docstrings with triple double quotes (`"""`).
 > * Do not put a blank line before or after the docstring.
->
->
-> ### A one-line docstring example
-> For example (from [PEP-257][pep-257]):
-> ~~~
-> def kos_root():
->     """Return the pathname of the KOS root directory."""
->     global _kos_root
->     if _kos_root: return _kos_root
->     ...
-> ~~~
-> {: .language-python}
-> * Triple quotes are used even though the string fits on one line. This makes it
-> * easy to later expand it.
-> * The closing quotes are on the same line as the opening quotes. This looks
-> * better for one-liners.
-> * There's no blank line either before or after the docstring.
-> * The docstring is a phrase ending in a period. It prescribes the function or
->  method's effect as a command ("Do this", "Return that"), not as a description;
->  e.g. don't write "Returns the pathname ...".
->
-> ### A multi-line docstring example
->
-> ~~~
-> def complex(real=0.0, imag=0.0):
->     """Form a complex number.
->
->     Keyword arguments:
->     real -- the real part (default 0.0)
->     imag -- the imaginary part (default 0.0)
->     """
->     if imag == 0.0 and real == 0.0:
->         return complex_zero
->     ...
-> ~~~
-> {: .language-python}
-> Note the following features:
->
-> * A one-line summary at the start,
-> * Followed by a blank line,
-> * Further elaboration, in this case a description of the arguments,
-> * A final carriage return with the final `"""` on their own line.
 {: .callout}
 
 > ## fahr_to_celsius
